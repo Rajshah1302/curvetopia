@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plot</title>
+    <title>Plot Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Plot Result</h1>
-    <img src="data:image/png;base64,{{ img_data }}" alt="Plot">
-    <br>
-    <a href="/">Upload another file</a>
+    <div class="container">
+        <header>
+            <h1>Plot Result</h1>
+        </header>
+        <main>
+            <div class="plot-container">
+                <img src="data:image/png;base64,{{ img_data }}" alt="Plot" class="plot-image">
+            </div>
+            <div class="link-container">
+                <a href="/" class="back-link">Upload another file</a>
+            </div>
+        </main>
+    </div>
 </body>
 </html>

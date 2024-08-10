@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Upload CSV File</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".csv">
-        <input type="submit" value="Upload">
-    </form>
+    <div class="container">
+        <header>
+            <h1>Curvetopia</h1>
+            <p>Upload a CSV file to analyze and classify shapes.</p>
+        </header>
+        <main>
+            <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+                <label for="file" class="file-label">Select CSV File:</label>
+                <input type="file" id="file" name="file" accept=".csv" class="file-input">
+                <input type="submit" value="Upload" class="submit-button">
+            </form>
+        </main>
+    </div>
 </body>
 </html>
