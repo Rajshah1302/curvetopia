@@ -3,3 +3,12 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Ignore uploaded files
+uploads/
+
+# Ignore Flask instance folder (if any)
+instance/
+
+# Ignore virtual environment
+venv/
