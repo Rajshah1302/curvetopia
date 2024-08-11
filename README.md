@@ -4,6 +4,8 @@
 
 This project, **Curvetopia**, provides a Python-based solution for detecting and regularizing contours from CSV files containing XY coordinates. It includes functionality for regularizing contours, classifying shapes, and plotting the results. A Flask-based web frontend allows users to upload CSV files, which are processed and displayed as plots in the browser.
 
+https://github.com/user-attachments/assets/e55d20b2-3baa-4b05-8a51-4dd4235f4748
+
 ## Features
 
 - **Shape Classification**: Identifies and classifies various shapes including triangles, rectangles, pentagons, hexagons, circles, and stars.
