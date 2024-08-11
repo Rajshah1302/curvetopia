@@ -12,3 +12,4 @@ instance/
 
 # Ignore virtual environment
 venv/
+myenv/
