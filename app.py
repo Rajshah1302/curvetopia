@@ -60,7 +60,8 @@ def plot_and_save(paths_XYs):
             ax.plot(contour_points[:, 0], contour_points[:, 1], c=c, linewidth=2)
             
            
-    
+    ax.invert_yaxis()  # Flip the y-axis
+    # ax.invert_xaxis()
     ax.set_aspect('equal')  # Ensure aspect ratio is equal
     ax.legend()
 
