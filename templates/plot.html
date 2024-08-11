@@ -1,24 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plot Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plot Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: radial-gradient( #bddafd, #FFFFFF);
+
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px; /* Adjust gap between images */
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .plot {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        .plot img {
+            width: 140%;
+            height: auto;
+            display: block;
+        }
+        .plot h2 {
+            margin: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
+    <h1>Plot Results</h1>
     <div class="container">
-        <header>
-            <h1>Plot Result</h1>
-        </header>
-        <main>
-            <div class="plot-container">
-                <img src="data:image/png;base64,{{ img_data }}" alt="Plot" class="plot-image">
-            </div>
-            <div class="link-container">
-                <a href="/" class="back-link">Upload another file</a>
-            </div>
-        </main>
+        <div class="plot">
+            <h2>Original Contours</h2>
+            <img src="data:image/png;base64,{{ original_img }}" alt="Original Contours">
+        </div>
+        <div class="plot">
+            <h2>Regularized Contours</h2>
+            <img src="data:image/png;base64,{{ regularized_img }}" alt="Regularized Contours">
+        </div>
     </div>
 </body>
 </html>
