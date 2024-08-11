@@ -35,13 +35,11 @@ def upload_file():
         img = plot_and_save(paths_XYs)
         return render_template('plot.html', img_data=img)
     return redirect(request.url)
-
 def plot_and_save(paths_XYs):
     """
     Plot the shapes and save the plot to an image in memory.
     """
     fig, ax = plt.subplots(tight_layout=True, figsize=(8, 8))
-
     colours = ['b', 'g', 'r', 'c', 'm', 'y', 'k']  # Define colors
     
     for i, XYs in enumerate(paths_XYs):
@@ -51,13 +49,27 @@ def plot_and_save(paths_XYs):
             regularized_contour = regularize_contour(contour)
             shape_type = classify_shape(regularized_contour)
             
-            # Directly plot the contour using matplotlib
-            contour_points = regularized_contour.reshape(-1, 2)
-            # Ensure the contour is closed
-            if not np.array_equal(contour_points[0], contour_points[-1]):
-                contour_points = np.vstack([contour_points, contour_points[0]])
-                
-            ax.plot(contour_points[:, 0], contour_points[:, 1], c=c, linewidth=2)
+            if shape_type == "Straight Line":
+                # Directly plot the line using the start and end points
+                x0, y0 = XY[0]
+                x1, y1 = XY[-1]
+                ax.plot([x0, x1], [y0, y1], c=c, linewidth=2)
+            elif shape_type == 'Unknown Shape' or shape_type == 'Not a Triangle':
+                ax.plot(XY[:, 0], XY[:, 1], c=c, linewidth=2)
+            else:
+                # Plot the regularized contour for other shapes
+                contour_points = regularized_contour.reshape(-1, 2)
+                if shape_type == "Straight Line":
+                    x0, y0 = XY[0]
+                    x1, y1 = XY[-1]
+                    ax.plot([x0, x1], [y0, y1], c=c, linewidth=2)
+                else:
+                    # Ensure the contour is closed
+                    if not np.array_equal(contour_points[0], contour_points[-1]):
+                        contour_points = np.vstack([contour_points, contour_points[0]])
+                    ax.plot(contour_points[:, 0], contour_points[:, 1], c=c, linewidth=2)
+            
+           
             
            
     ax.invert_yaxis()  # Flip the y-axis
